@@ -71,7 +71,43 @@
         <div class="flex-container">
             <div class="thumbnails">
                 <div class="framer">
-                    <h1>ODSP Encrypted Media with CDN</h1>
+<h1>ODSP Media without CDN</h1>
+                <video id="azuremediaplayer2" class="azuremediaplayer amp-default-skin amp-big-play-centered" controls
+                    tabindex="0">
+                    <p class="amp-no-js">To view this video please enable JavaScript, and consider upgrading to a web
+                        browser that supports HTML5 video</p>
+                </video>
+                <script>
+                    var amPlayer = amp('azuremediaplayer2', {
+                        "nativeControlsForTouch": false,
+                        autoPlay: false,
+                        headers: ['Expires', 'Pragma'],
+                        width: "400",
+                        height: "400",
+                        corsPolicy: "UseCredentials"
+                    });
+
+                    amPlayer.src([{ // a live stream
+                        src: "https://beaconskartik.github.io/apihosting/noncdn.mpd",
+                        type: "application/dash+xml",
+                        protectionInfo: [{"type": "AES"}]
+                    }]);
+                    
+                    amPlayer.muted(true);
+                    amPlayer.autoplay(true);
+                </script>
+            </div>
+            <div>
+                <a id="playButton2" class="btn btn-primary" href="#">Play/Pause</a>
+                <script>
+                    $('#playButton2').on('click', function (e) {
+                        $('.vjs-play-control').click();
+                    });
+                </script>
+            </div>
+            <div>
+            <div class="thumbnails">
+                                    <h1>ODSP Encrypted Media with CDN</h1>
                     <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered"
                         controls tabindex="0">
                         <p class="amp-no-js">To view this video please enable JavaScript, and consider upgrading to a
@@ -97,42 +133,6 @@
                         amPlayer.autoplay(true);
                     </script>
                 </div>
-            </div>
-            <div>
-                <a id="playButton2" class="btn btn-primary" href="#">Play/Pause</a>
-                <script>
-                    $('#playButton2').on('click', function (e) {
-                        $('.vjs-play-control').click();
-                    });
-                </script>
-            </div>
-            <div>
-            <div class="thumbnails">
-                <h1>ODSP Media without CDN</h1>
-                <video id="azuremediaplayer2" class="azuremediaplayer amp-default-skin amp-big-play-centered" controls
-                    tabindex="0">
-                    <p class="amp-no-js">To view this video please enable JavaScript, and consider upgrading to a web
-                        browser that supports HTML5 video</p>
-                </video>
-                <script>
-                    var amPlayer = amp('azuremediaplayer2', {
-                        "nativeControlsForTouch": false,
-                        autoPlay: false,
-                        headers: ['Expires', 'Pragma'],
-                        width: "400",
-                        height: "400",
-                        corsPolicy: "UseCredentials"
-                    });
-
-                    amPlayer.src([{ // a live stream
-                        src: "https://beaconskartik.github.io/apihosting/noncdn.mpd",
-                        type: "application/dash+xml",
-                        protectionInfo: [{"type": "AES"}]
-                    }]);
-                    
-                    amPlayer.muted(true);
-                    amPlayer.autoplay(true);
-                </script>
             </div>
         </div>
         </div>
